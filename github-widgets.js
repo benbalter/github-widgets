@@ -1,12 +1,8 @@
-/* 
-1. Widget for most recent commits from one github org 
-2. Widget for most recent commits from all registered .gov github orgs, pulled dynamically from the SMR api
-3. Widget for most active repos from one github org
-4. Widget for most active repos from all registered .gov github orgs, pulled dynamically from the SMR api
-5. Widget for most recent public activity from one github org 
-6. Widget for most recent public activity from all registered .gov github orgs 
-*/
-
+/**
+ * GitHub Activity Widgets
+ * @author Benjamin J. Balter ( http://ben.balter.com )
+ */
+ 
 var gitHubWidgets = {
 	
 	base: 'https://api.github.com/',
@@ -25,10 +21,10 @@ var gitHubWidgets = {
 		this.type = this.type || this.el.getAttribute("data-type"); // commits, repos, events
 		this.limit = this.limit || this.el.getAttribute("data-limit") || 5 // commits, repos, events
 		
-		if ( this.type == "repos" || this.type == "events" )
+		if ( this.type == "repos" || this.type == "events" && !this.repo )
 			url = this.base + "orgs/" + this.org + "/" + this.type;
-		else
-			url = this.base + "repos/" + this.org + "/" + this.repo + "/commits";
+		else 
+			url = this.base + "repos/" + this.org + "/" + this.repo + "/" + this.type;		
 		
 		url = url + "?callback=gitHubWidgets.callback";
 
