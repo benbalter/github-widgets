@@ -48,3 +48,11 @@ External Dependencies
 ---------------------
 
 None. Just the GitHub API.
+
+Roadmap (todo)
+--------------
+
+* Support for multiple widgets per page
+* Better namespacing of `relativeDate` function
+* Add support for additional event types
+* Better `init()` within script
