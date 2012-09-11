@@ -34,6 +34,8 @@ and include the following code right before your page's `</body>` tag:
 <script src="https://raw.github.com/benbalter/github-widgets/master/github-widgets.min.js"></script>
 ```
 
+(*Note: if for some reason you can't modify the footer, technically anywhere after the `<ul>` is fine, although it may make the page content appear to load a bit slower*)
+
 Customization
 -------------
 
