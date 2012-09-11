@@ -105,8 +105,6 @@ var gitHubWidgets = {
 	
 	renderEvent: function( event ) {
 
-		console.log( event );
-		
 		//event types: http://developer.github.com/v3/events/types/
 		li = document.createElement( "li" );
 		switch ( event.type ) {
