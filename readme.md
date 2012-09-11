@@ -3,6 +3,11 @@ GitHub Activity Widgets
 
 Javascript widgets for showing GitHub organization activity (commits, events, repos) in webpages
 
+Live Example
+------------
+
+[Demo](http://benbalter.github.com/github-widgets/)
+
 Types of Widgets
 ----------------
 
@@ -38,3 +43,8 @@ You can customize the widget with the following options:
 * `data-org` - the GitHub organization
 * `data-limit` - the maximum number of results to return
 * `data-repo` - (for events and commits only) the repository
+
+External Dependencies
+---------------------
+
+None. Just the GitHub API.
