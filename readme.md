@@ -58,3 +58,8 @@ Roadmap (todo)
 * Better namespacing of `relativeDate` function
 * Add support for additional event types
 * Better `init()` within script
+
+License
+-------
+
+Available under the MIT and GPL licenses.
