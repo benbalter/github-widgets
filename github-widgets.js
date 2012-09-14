@@ -34,6 +34,8 @@ var gitHubWidgets = {
 	
 	// Append JSONP call to body
 	addScript: function() {
+	
+		url = this.buildUrl();
 		
 		if ( this.type == 'events' && typeof window.githubSentences == 'undefined' ) {
 			
@@ -46,7 +48,7 @@ var gitHubWidgets = {
 		
 		body = document.getElementsByTagName("body")[0];         
 		jsonp = document.createElement("script");
-		jsonp.src = this.buildUrl();
+		jsonp.src = url;
 		body.appendChild( jsonp );
 		
 	},
