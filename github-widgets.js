@@ -44,6 +44,13 @@ var gitHubWidgets = {
 			js.src = 'https://raw.github.com/adamjacobbecker/github-sentences/master/js/github-sentences.js';
 			body.appendChild( js );	
 		
+			head = document.getElementsByTagName("head")[0];         
+			css = document.createElement("style");
+			css.setAttribute("rel", "stylesheet")
+			css.setAttribute("type", "text/css")
+			css.setAttribute("href", 'https://raw.github.com/adamjacobbecker/github-sentences/master/js/github-sentences.js')
+			head.appendChild( js );	
+			
 		}
 		
 		body = document.getElementsByTagName("body")[0];         
