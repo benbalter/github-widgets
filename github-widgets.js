@@ -44,12 +44,7 @@ var gitHubWidgets = {
 			js.src = 'https://raw.github.com/adamjacobbecker/github-sentences/master/js/github-sentences.js';
 			body.appendChild( js );	
 		
-			head = document.getElementsByTagName("head")[0];         
-			css = document.createElement("style");
-			css.setAttribute("rel", "stylesheet")
-			css.setAttribute("type", "text/css")
-			css.setAttribute("href", 'https://raw.github.com/adamjacobbecker/github-sentences/master/js/github-sentences.js')
-			head.appendChild( js );	
+			document.write( "<style>.github-sentence-item { padding: 5px 0 5px 55px; position: relative; min-height: 50px;}.github-sentence-item .avatar { position: absolute; left: 0; top: 2px; border: 1px solid #d0d0d0; padding: 2px;}.github-sentence-item .avatar img { width: 40px; height: 40px;} #github-widget { list-style: none; }</style>" );	
 			
 		}
 		
@@ -122,7 +117,8 @@ var gitHubWidgets = {
 		//event types: http://developer.github.com/v3/events/types/
 		li = document.createElement( "li" );
 		li.innerHTML = githubSentences.convert( event );
-				
+		li.innerHTML = li.innerHTML.replace(/<div class=\"timestamp\">([^<]+)<\/div>/gi, function(s, m1){ return relativeDate( new Date( m1 ) ) });
+		
 		if ( li )
 			this.el.appendChild( li );
 		
