@@ -34,12 +34,21 @@ var gitHubWidgets = {
 	
 	// Append JSONP call to body
 	addScript: function() {
-	
+		
+		if ( this.type == 'events' && typeof window.githubSentences == 'undefined' ) {
+			
+			body = document.getElementsByTagName("body")[0];         
+			js = document.createElement("script");
+			js.src = 'https://raw.github.com/adamjacobbecker/github-sentences/master/js/github-sentences.js';
+			body.appendChild( js );	
+		
+		}
+		
 		body = document.getElementsByTagName("body")[0];         
 		jsonp = document.createElement("script");
 		jsonp.src = this.buildUrl();
 		body.appendChild( jsonp );
-
+		
 	},
 	
 	//Callback handler
@@ -103,27 +112,8 @@ var gitHubWidgets = {
 
 		//event types: http://developer.github.com/v3/events/types/
 		li = document.createElement( "li" );
-		switch ( event.type ) {
-			case "WatchEvent":
-				li.innerHTML = '<a href="' + this.authorUrl( event.actor.url ) + '">' + event.actor.login + "</a>";
-				li.innerHTML += ' ' + event.payload.action + ' watching ';
-				li.innerHTML += '<a href="' + this.repoUrl( event.repo.url ) + '">' + event.repo.name + "</a>";
-			break;
-			case "IssueCommentEvent":
-				li.innerHTML = '<a href="' + this.authorUrl( event.actor.url ) + '">' + event.actor.login + "</a>";
-				li.innerHTML += ' ' + event.payload.action + ' issue ';
-				li.innerHTML += '<a href="' + event.payload.issue.html_url + '">' + event.payload.issue.title + "</a>";
-			break;
-			case "ForkEvent":
-				li.innerHTML = '<a href="' + this.authorUrl( event.actor.url ) + '">' + event.actor.login + "</a>";
-				li.innerHTML += ' forked repo ';
-				li.innerHTML += '<a href="' + this.repoUrl( event.repo.url ) + '">' + event.repo.name + "</a>";
-			break;
-			default:
-				//we don't know this event; don't render an li
-				li = null;
-		} 
-		
+		li.innerHTML = githubSentences.convert( event );
+				
 		if ( li )
 			this.el.appendChild( li );
 		
